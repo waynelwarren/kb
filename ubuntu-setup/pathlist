@@ -1,0 +1,4 @@
+bin /home/wayne/bin
+git /home/wayne/git
+frame /home/wayne/git/frame_cache
+server /home/wayne/git/frame_cache/avt_assets_server
