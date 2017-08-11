@@ -1,0 +1,15 @@
+Find eclipse-cpp-oxygen-R-linux-gtk-x86_64.tar.gz or something newer. Unzip it into eclipse/ (~/eclipse or elsewhere) directory & include in path if desired.
+
+get Sourcery_G++_Lite.tar.gz (http://avtjira01:8090/display/RAIL/CodeSourcery+ARM+Toolchain).
+    mkdir ~/opt && cd ~/opt (or elsewhere)
+    tar zxf Sourcery_G++_Lite.tar.gz
+the path is ~/opt/Sourcery_G++_Lite/bin.
+
+In eclipse, the toolchain prefix is arm-none-linux-gnueabi- and the path is ~/opt/Sourcery_G++_Lite.
+
+Needed for toolchain to work:
+sudo apt-get install lib32ncurses5
+
+Needed for project to build:
+sudo apt-get install libgtk2.0-0:i386 libxtst6:i386 gtk2-engines-murrine:i386 libstdc++6 libxt6:i386
+sudo apt-get install libdbus-glib-1-2:i386 libasound2:i386
