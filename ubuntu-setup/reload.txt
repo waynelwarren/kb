@@ -1,7 +1,7 @@
 # ===============================================================
 # chrome
 # ===============================================================
-sudo apt-get install libxss1 libappindicator1 libindicator7
+sudo apt-get -y install libxss1 libappindicator1 libindicator7
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome*.deb
 sudo apt-get install -f
@@ -31,7 +31,7 @@ Preferences: Display->Advanced (After displaying for 2147483 seconds
 # apt-get
 # ===============================================================
 sudo apt-get update
-sudo apt-get upgrade
+sudo apt-get -y upgrade
 sudo apt-get -y install tmux
 sudo apt-get -y install htop
 sudo apt-get -y install git

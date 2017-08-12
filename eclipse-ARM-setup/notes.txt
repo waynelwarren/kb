@@ -1,4 +1,4 @@
-Find eclipse-cpp-oxygen-R-linux-gtk-x86_64.tar.gz or something newer. Unzip it into eclipse/ (~/eclipse or elsewhere) directory & include in path if desired.
+Find eclipse-cpp-oxygen-R-linux-gtk-x86_64.tar.gz (http://www.eclipse.org/downloads/packages/eclipse-ide-cc-developers/oxygenr) or something newer. Unzip it into eclipse/ (~/eclipse or elsewhere) directory & include in path if desired.
 
 get Sourcery_G++_Lite.tar.gz (http://avtjira01:8090/display/RAIL/CodeSourcery+ARM+Toolchain).
     mkdir ~/opt && cd ~/opt (or elsewhere)
