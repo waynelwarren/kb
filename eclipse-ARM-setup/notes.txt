@@ -13,3 +13,13 @@ sudo apt-get install lib32ncurses5
 Needed for project to build:
 sudo apt-get install libgtk2.0-0:i386 libxtst6:i386 gtk2-engines-murrine:i386 libstdc++6 libxt6:i386
 sudo apt-get install libdbus-glib-1-2:i386 libasound2:i386
+
+Within Eclipse, install GNU MCU:
+    Help->Eclipse Marketplace  Find: "GNU MCU Eclipse".
+
+IDIS Search and Watch APIs for ARM
+ftp::sales.idis.co.kr/RAS_Plus/SDK/
+ un: apollovideo, pw: apollovideo
+
+Other libraries available from
+git clone https://github.com/apollovideo/armLib.git
