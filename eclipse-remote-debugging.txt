@@ -1,0 +1,8 @@
+Run->Debug Configurations
+Name: <whatever>
+Connection: New of Edit Connection - connection name, ip/un/pw
+Connection: Raspberry Pi
+Remote absolute file path <find it>
+Debugger tab: GDB debugger [gdb-multiarch]
+
+Note: on bottom, you can select Manual or Automatic launch of remote debugger.
