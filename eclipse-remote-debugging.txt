@@ -6,3 +6,8 @@ Remote absolute file path <find it>
 Debugger tab: GDB debugger [gdb-multiarch]
 
 Note: on bottom, you can select Manual or Automatic launch of remote debugger.
+
+if Manual, then go to Debugger tab, Connection tab
+  enter ip of remote machine & port [2345]
+  on remote machine, go to directory where program resides:
+    gdbserver :2345 <command line>
