@@ -1,4 +1,5 @@
 Run->Debug Configurations
+Select C/C++ Remote Application
 Name: <whatever>
 Connection: New of Edit Connection - connection name, ip/un/pw
 Connection: Raspberry Pi
