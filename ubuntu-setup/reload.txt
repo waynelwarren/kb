@@ -94,3 +94,13 @@ code
 #install extension, ^P for extensions, search for cpptools.
 # [install] [reload]
 # lock to launcher
+# ===============================================================
+# Jansson
+# ===============================================================
+git clone https://github.com/akheron/jansson
+cd jansson
+autoreconf -vi
+./configure
+make
+make check
+sudo make install
