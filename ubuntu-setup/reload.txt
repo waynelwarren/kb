@@ -105,3 +105,10 @@ autoreconf -vi
 make
 make check
 sudo make install
+
+# ===============================================================
+# ssh-keygen
+# ===============================================================
+# run ssh-keygen & accept defaults
+# add a machine for authorized login, e.g.:
+ssh-copy-id nvidia@172.22.4.56
