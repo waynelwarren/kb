@@ -1,0 +1,20 @@
+sudo apt-get install qemu-kvm libvirt-bin
+curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+chmod +x ./kubectl && sudo mv kubectl /usr/local/bin/kubectl
+curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.25.0/minikube-linux-amd64
+chmod +x minikube && sudo mv minikube /usr/local/bin/
+sudo usermod -a -G libvirtd $(whoami)
+curl -LO https://storage.googleapis.com/minikube/releases/latest/docker-machine-driver-kvm2
+minikube start --vm-driver kvm2
+
+# run a hello-world echoserver sample
+minikube start
+kubectl run hello-minikube --image=k8s.gcr.io/echoserver:1.4 --port=8080
+kubectl expose deployment hello-minikube --type=NodePort
+kubectl get pod
+minikube service hello-minikube --url # can put output into browser or curl
+curl $(minikube service hello-minikube --url) 
+
+
+# point Docker to the Kubernetes environment
+eval $(minikube docker-env)
