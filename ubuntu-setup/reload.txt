@@ -94,3 +94,7 @@ code
 #install extension, ^P for extensions, search for cpptools.
 # [install] [reload]
 # lock to launcher
+# ===============================================================
+# IDIS SDKs
+# ===============================================================
+ftp://sales.idis.co.kr/RAS_Plus
