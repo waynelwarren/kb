@@ -10,11 +10,44 @@ minikube start --vm-driver kvm2
 # run a hello-world echoserver sample
 minikube start
 kubectl run hello-minikube --image=k8s.gcr.io/echoserver:1.4 --port=8080
-kubectl expose deployment hello-minikube --type=NodePort
+kubectl expose deployment hello-minikube --type=NodePort   # creates deployment (expose creates service also)
 kubectl get pod
 minikube service hello-minikube --url # can put output into browser or curl
 curl $(minikube service hello-minikube --url) 
 
-
 # point Docker to the Kubernetes environment
 eval $(minikube docker-env)
+    # output from minikub docker-env
+    export DOCKER_TLS_VERIFY="1"
+    export DOCKER_HOST="tcp://192.168.39.156:2376"
+    export DOCKER_CERT_PATH="/home/wayne/.minikube/certs"
+    export DOCKER_API_VERSION="1.23"
+
+# clean up the sample
+kubectl delete service hello-minikube
+kubectl delete deployment hello-minikube
+minikube stop
+eval $(minikube docker-env -u)   # to undo the 'eval' above
+
+minikube version
+kubectl version
+kubectl cluster-info
+kubectl get nodes
+kubectl run kubernetes-bootcamp --image=docker.io/jocatalin/kubernetes-bootcamp:v1 --port=8080
+kubectl getversion deployments
+
+kubectl proxy  # use url for browser access
+
+kubectl get pods
+kubectl describe pods
+kubectl logs <pod-name>
+kubectl exec [-it] <pod-name> <cmd>   # like docker exec
+    ex: kubectl exec -it hello-minikube-c6c6764d-5gxh8 /bin/bash
+kubectl describe services
+kubectl describe deployment
+    # note Lables: section, key=value, e.g. run=hello-minikube
+    # then '-l run=hello-minikube' can be used in place of <pod-name>
+kubectl label pod <pod-name> mykey=myvalue # creates new Label in addition to existing ones
+
+kubectl scale deployments/hello-minikube --replicas=4 # scales up to 4 pods
+kubectl get pods -o wide

@@ -5,6 +5,7 @@ ssh-keygen -t rsa -b 4096 -C "wayne@warrenfamilyhome.com"
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
 xclip -sel clip < ~/.ssh/id_rsa.pub
+# from githum.com settings, paste SSH key
 ssh -T git@github.com
 # add a machine for authorized login, e.g.:
 ssh-copy-id nvidia@172.22.4.56
@@ -15,3 +16,17 @@ git remote set-url origin git@github.com:apollovideo/obapi.git
 
 # if using HTTP URLs, cache the password for 15+ minutes
 git config --global credential.helper cache
+
+# automatically mount a drive by UUID (ex: /dev/sdb1)
+# if not mounted, mount the device:
+sudo mount /dev/sdb1 /opt/chmm_server/frame_cache
+# copy the line for /dev/sdb1 in /etc/mtab into /etc/fstab
+# find the UUID of the /dev/sdb1 device in /dev/disk/by-uuid:
+ll /dev/disk/by-uuid
+lrwxrwxrwx 1 root root  10 Feb  7 15:23 1d5b2e4e-65ca-4a55-8558-f140752b6091 -> ../../sda5
+lrwxrwxrwx 1 root root  10 Feb  7 15:23 5dcc8b6b-7007-42f6-84cf-fd9933f72dc4 -> ../../sda1
+lrwxrwxrwx 1 root root  10 Feb  8 11:24 8491486f-ac25-41eb-9ef1-22df263643b0 -> ../../sdb1
+# edit /etc/fstab, replace /dev/sdb1 with UUID=8491486f-ac25-41eb-9ef1-22df263643b0
+
+# find process ids based on application name
+pgrep app-name
