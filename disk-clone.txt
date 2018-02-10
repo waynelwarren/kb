@@ -1,0 +1,24 @@
+Cloning a disk.
+
+Boot from a USB drive so that the source disk on the host computer is available.
+
+Cannot clone onto smaller disk. But can use 'gparted' to shrink the partitions of source disk first.
+
+Use 'sfdisk' to create the same partition layout on a second disk:
+    sudo sfdisk -d /dev/sda | sudo sfdisk /dev/sdb
+
+Then, for every partition, do:
+
+    dd if=/dev/sda1 of=/dev/sdb1
+    dd if=/dev/sda2 of=/dev/sdb2
+
+To copy the boot sector:
+
+    dd if=/dev/sda of=mbr.bak bs=512 count=1
+    dd if=mbr.bak of=/dev/sdb bs=446 count=1
+
+Alternative to dd from source to target partitions:
+    rsync -av /mount/point/of/large/partition/ /mount/point/of/small/partition
+(beware of recursive copying)
+
+clonezilla is recommended to copy partition-by-partition. Assumes partition sizes match.
