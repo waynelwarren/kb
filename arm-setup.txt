@@ -1,0 +1,9 @@
+# ===============================================================
+# rabbitmq
+# ===============================================================
+sudo apt-get install erlang-nox
+sudo apt-get install rabbitmq-server
+# it will try to start the service and fail)
+sudo rabbitmq-plugins enable rabbitmq_management
+# Try a manual run. If you see this output, the installation was successful.
+sudo /usr/lib/rabbitmq/bin/rabbitmq-server start
