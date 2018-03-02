@@ -7,3 +7,27 @@ sudo apt-get install rabbitmq-server
 sudo rabbitmq-plugins enable rabbitmq_management
 # Try a manual run. If you see this output, the installation was successful.
 sudo /usr/lib/rabbitmq/bin/rabbitmq-server start
+
+# ===============================================================
+# rabbitmq-c
+# ===============================================================
+sudo apt-get install libssl-dev
+git clone git@github.com:alanxz/rabbitmq-c.git
+cd rabbitmq-c
+mkdir build && cd build
+cmake ..
+cmake --build .
+sudo cmake --build . --target install
+
+# ===============================================================
+# go 1.9
+# ===============================================================
+sudo add-apt-repository ppa:gophers/archive
+sudo apt-get update
+sudo apt-get install golang-1.9-go
+sudo rm /usr/lib/go
+sudo rm /usr/bin/go
+sudo rm /usr/bin/gofmt
+sudo ln -s /usr/lib/go-1.9 /usr/lib/go
+sudo ln -s /usr/lib/go-1.9/bin/go /usr/bin/go
+sudo ln -s /usr/lib/go-1.9/bin/gofmt /usr/bin/gofmt
