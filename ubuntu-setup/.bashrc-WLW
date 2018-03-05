@@ -1,7 +1,7 @@
 # WLW additions
 ch() { cd `grep -m 1 "^$1" ~/bin/pathlist | awk '{print $2}'` ; }
 export LD_LIBRARY_PATH=/home/wayne/git/third_party/grpc/opt/lib/
-export PATH=./:/home/wayne/bin:/home/wayne/git/bin:/home/wayne/julia-0.4.7/bin:$PATH
+export PATH=./:/home/wayne/bin:/home/wayne/git/bin:$PATH
 export GOPATH=/home/wayne/git
 export CMAKE_BUILD_TYPE=DEBUG
 export PS1="\[\033[01;44m\h@\u:\w\n>\[\033[00m"

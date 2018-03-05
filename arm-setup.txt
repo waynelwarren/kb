@@ -1,3 +1,95 @@
+sudo apt-get -y install build-essential autoconf libtool
+sudo apt-get -y install libgflags-dev libgtest-dev
+sudo apt-get -y install build-essential autoconf libtool
+sudo apt-get -y install libsnappy-dev zlib1g-dev libbz2-dev liblz4-dev libzstd-dev
+sudo apt-get -y install clang libc++-dev
+sudo apt-get -y install curl
+
+mkdir ~/bin
+mkdir ~/lib
+
+# ===============================================================
+# rocksdb
+# ===============================================================
+cd ~/git
+git clone https://github.com/facebook/rocksdb.git        
+cd ~/git/rocksdb
+make -j 4 static_lib                                     
+sudo make install
+
+# ===============================================================
+# gRPC
+# ===============================================================
+cd ~/git
+git clone -b $(curl -L https://grpc.io/release) https://github.com/grpc/grpc
+cd ~/git/grpc
+git submodule update --init
+make
+cd third_party/protobuf
+sudo make install
+sudo cp grpc_cpp_plugin /usr/local/bin
+cd ~/git/grpc/build
+cp *.a /usr/local/lib
+
+# alternate grpc build
+cd ~/git
+git clone -b $(curl -L https://grpc.io/release) https://github.com/grpc/grpc
+cd ~/git/grpc
+git submodule update --init
+cmake -DCMAKE_BUILD_TYPE=DEBUG .
+make grpc++
+make grpc++_unsecure
+make grpc_unsecure
+sudo make install
+
+# ===============================================================
+# iniparser
+# ===============================================================
+cd ~/git
+git clone https://github.com/ndevilla/iniparser.git
+cd ~git/iniparser
+make
+
+# ===============================================================
+# ffmpeg
+# ===============================================================
+cd ~/git
+wget -O ffmpeg-3.3.3.tar.bz2 http://ffmpeg.org/releases/ffmpeg-3.3.3.tar.bz2
+tar -xf ffmpeg-3.3.3.tar.bz2
+cd ffmpeg-3.3.3.tar
+./configure
+make
+sudo make install
+
+# ===============================================================
+# boost
+# ===============================================================
+cd ~/git
+wget -O boost.tar.bz2 https://dl.bintray.com/boostorg/release/1.64.0/source/boost_1_64_0.tar.bz2
+bzip2 -d boost.tar.bz2
+tar xf boost.tar
+cd boost_1_64_0
+./bootstrap.sh
+./b2
+export BOOST_ROOT=/home/nvidia/git/boost_1_64_0
+cp stage/lib/libboost_system.so.1.64.0 ~/lib
+ln -s ~/lib/libboost_system.so.1.64.0 ~/lib/libboost_system.so
+cp stage/lib/libboost_thread.so.1.64.0 ~/lib
+ln -s ~/lib/libboost_thread.so.1.64.0 ~/lib/libboost_thread.so
+
+# ===============================================================
+# chmm_server
+# ===============================================================
+git clone https://github.com/apollovideo/frame_cache.git 
+git clone https://github.com/apollovideo/chmm_server.git 
+
+cd ~/git/chmm_server/src
+mkdir /opt/chmm_server
+make
+
+cd ~/git/frame_cache/avt_assets_client
+make
+
 # ===============================================================
 # rabbitmq
 # ===============================================================
@@ -18,6 +110,7 @@ mkdir build && cd build
 cmake ..
 cmake --build .
 sudo cmake --build . --target install
+# need to add /usr/local/lib/aarch64-linux-gnu to LD_LIBRARY_PATH
 
 # ===============================================================
 # go 1.9
@@ -31,3 +124,13 @@ sudo rm /usr/bin/gofmt
 sudo ln -s /usr/lib/go-1.9 /usr/lib/go
 sudo ln -s /usr/lib/go-1.9/bin/go /usr/bin/go
 sudo ln -s /usr/lib/go-1.9/bin/gofmt /usr/bin/gofmt
+
+# ===============================================================
+# jansson
+# ===============================================================
+git clone git@github.com:akheron/jansson.git
+cd jansson
+autoreconf -i
+./configure
+make
+sudo make install
