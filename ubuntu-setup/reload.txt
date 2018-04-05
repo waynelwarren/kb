@@ -64,7 +64,7 @@ sudo apt-get -y install docker-ce
 sudo usermod -aG docker wayne
 # docker-compose
 sudo curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
-
+sudo chmod +x /usr/local/bin/docker-compose
 
 # RocksDB
 sudo apt-get -y install libsnappy-dev zlib1g-dev libbz2-dev liblz4-dev libzstd-dev
@@ -113,3 +113,25 @@ autoreconf -vi
 make
 make check
 sudo make install
+
+
+# ===============================================================
+# RabbitMQ
+# ===============================================================
+# download esl-erlang_20.2.2-1_ubuntu_xenial_amd64.deb
+#    from http://packages.erlang-solutions.com/erlang/esl-erlang/FLAVOUR_1_general/esl-erlang_20.2.2-1~ubuntu~xenial_amd64.deb
+# install it
+echo "deb https://dl.bintray.com/rabbitmq/debian xenial main" | sudo tee /etc/apt/sources.list.d/bintray.rabbitmq.list
+wget -O- https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc |      sudo apt-key add -
+wget -O- https://www.rabbitmq.com/rabbitmq-release-signing-key.asc | sudo apt-key add -
+sudo apt-get update
+sudo apt-get install rabbitmq-server
+service rabbitmq-server start
+#
+# for C development
+git clone git@github.com:alanxz/rabbitmq-c.git
+cd rabbitmq-c
+mkdir build && cd build
+cmake -DENABLE_SSL_SUPPORT=OFF ..
+cmake --build .
+sudo cmake --build . --target install
