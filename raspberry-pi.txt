@@ -1,0 +1,17 @@
+To flash the Pi Compute Module (EMMC)
+
+# connect Ubuntu to Pi with micro-USB. Be sure jumper for Slave Enable is set.
+git clone --depth=1 https://github.com/raspberrypi/usbboot
+cd usbboot
+
+sudo apt-get install libusb-1.0-0-dev
+
+make
+
+sudo ./rpiboot
+
+# should find Pi & mount Pi partitions.
+
+# may need to unmount them before dd.
+
+sudo dd if=raw_os_image_of_your_choice.img of=/dev/sdX bs=4MiB
