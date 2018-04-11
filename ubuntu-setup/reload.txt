@@ -126,7 +126,7 @@ echo "deb https://dl.bintray.com/rabbitmq/debian xenial main" | sudo tee /etc/ap
 wget -O- https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc |      sudo apt-key add -
 wget -O- https://www.rabbitmq.com/rabbitmq-release-signing-key.asc | sudo apt-key add -
 sudo apt-get update
-sudo apt-get install rabbitmq-server
+sudo apt-get install rabbitmq-server # if this fails, go back & read Erlang download/install comments above
 service rabbitmq-server start
 #
 # for C development
@@ -136,3 +136,14 @@ mkdir build && cd build
 cmake -DENABLE_SSL_SUPPORT=OFF ..
 cmake --build .
 sudo cmake --build . --target install
+
+# ===============================================================
+# valgrind
+# ===============================================================
+# go to http://valgrind.org/downloads/current.html, download & install most recent version.
+# manual available at http://valgrind.org/docs/manual/valgrind_manual.pdf
+# build instructions after extracting the .tar.bz2 file into a subdirectory:
+cd <subdirectory>
+./configure
+make
+sudo make install
