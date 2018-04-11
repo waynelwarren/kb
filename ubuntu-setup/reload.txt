@@ -69,6 +69,8 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 # RocksDB
 sudo apt-get -y install libsnappy-dev zlib1g-dev libbz2-dev liblz4-dev libzstd-dev
+# clone source code, build:
+PORTABLE=1 make static_lib
 
 # ===============================================================
 # forticlient
