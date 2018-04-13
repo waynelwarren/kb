@@ -15,6 +15,8 @@ ssh -T git@github.com
 Run `make` to collect all the most recent configuration files.
 
 Copy `vimrc.local` to `~/.vimrc` or `/etc/vim`. Copy `.tmux.conf` to `~/.tmux.conf`.
+Create ~/bin.
+Copy k to ~/bin
 Copy .gitconfig to ~/.gitconfig. Create ~/bin and copy pathlist to ~/bin.
 
 Add `.bashrc-WLW` to the end of `~/.bashrc`.

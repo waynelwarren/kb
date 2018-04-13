@@ -42,6 +42,8 @@ sudo apt-get -y install gdb-multiarch
 sudo apt-get -y install libreadline6 libreadline6-dev
 sudo apt-get -y install smartmontools
 sudo apt-get -y install aptitude
+sudo apt-get -y install kdbg
+sudo apt-get -y install dlocate
 sudo apt -y install golang-go
 git config --global user.email "wayne@warrenfamilyhome.com"
 git config --global user.name "Wayne Warren"
