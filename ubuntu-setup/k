@@ -1,0 +1,2 @@
+sudo echo "Password? "
+LD_LIBRARY_PATH=/home/wayne/lib:$LD_LIBRARY_PATH sudo kdbg > /dev/null 2>&1 &
