@@ -161,3 +161,10 @@ sudo make install
 # 
 # separate product for GUI
 sudo apt-get install -y sqlitebrowser
+
+# ===============================================================
+# QT
+# ===============================================================
+# libraries needed for QT Creator
+sudo apt-get install -y libgl1-mesa-dev
+sudo apt-get install -y mesa-common-dev
