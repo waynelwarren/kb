@@ -152,3 +152,12 @@ cd <subdirectory>
 ./configure
 make
 sudo make install
+
+# ===============================================================
+# SQLite
+# ===============================================================
+# go to http://sqlite.org/download.html, download sqlite-autoconf-3230100.tar.gz
+# follow instructions to build from source.
+# 
+# separate product for GUI
+sudo apt-get install -y sqlitebrowser
