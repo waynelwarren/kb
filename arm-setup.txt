@@ -4,6 +4,7 @@ sudo apt-get -y install build-essential autoconf libtool
 sudo apt-get -y install libsnappy-dev zlib1g-dev libbz2-dev liblz4-dev libzstd-dev
 sudo apt-get -y install clang libc++-dev
 sudo apt-get -y install curl
+sudo apt-get -y install golang-goprotobuf-dev
 
 mkdir ~/bin
 mkdir ~/lib
@@ -53,18 +54,23 @@ make
 # ===============================================================
 # ffmpeg
 # ===============================================================
-cd ~/git
-wget -O ffmpeg-3.3.3.tar.bz2 http://ffmpeg.org/releases/ffmpeg-3.3.3.tar.bz2
-tar -xf ffmpeg-3.3.3.tar.bz2
-cd ffmpeg-3.3.3.tar
+mkdir -p ~/src/ffmpeg.org
+cd ~/src/ffmpeg.org
+# go to ffmpeg.org/download.html to find the most recent
+wget -O ffmpeg-3.4.2.tar.bz2 http://ffmpeg.org/releases/ffmpeg-3.4.2.tar.bz2
+tar -xf ffmpeg-3.4.2.tar.bz2
+cd ffmpeg-3.4.2.tar
+sudo apt-get install yasm
 ./configure
-make
+make -j 4
 sudo make install
 
 # ===============================================================
 # boost
 # ===============================================================
-cd ~/git
+mkdir -p ~/src/boost.org
+cd ~/src/boost.org
+# go to boost.org/users/download to find the most recent
 wget -O boost.tar.bz2 https://dl.bintray.com/boostorg/release/1.64.0/source/boost_1_64_0.tar.bz2
 bzip2 -d boost.tar.bz2
 tar xf boost.tar

@@ -42,6 +42,8 @@ sudo apt-get -y install gdb-multiarch
 sudo apt-get -y install libreadline6 libreadline6-dev
 sudo apt-get -y install smartmontools
 sudo apt-get -y install aptitude
+sudo apt-get -y install autoconf
+sudo apt-get -y install libtool-bin
 sudo apt-get -y install kdbg
 sudo apt-get -y install dlocate
 sudo apt -y install golang-go
@@ -70,10 +72,14 @@ sudo usermod -aG docker wayne
 sudo curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 
+# ===============================================================
 # RocksDB
+# ===============================================================
+cd ~/src/github.com/facebook
+git clone git@github.com:facebook/rocksdb.git
 sudo apt-get -y install libsnappy-dev zlib1g-dev libbz2-dev liblz4-dev libzstd-dev
-# clone source code, build:
-PORTABLE=1 make static_lib
+cd rocksdb
+PORTABLE=1 make -j 4 static_lib
 
 # ===============================================================
 # forticlient
@@ -112,11 +118,12 @@ ftp://sales.idis.co.kr/RAS_Plus
 # ===============================================================
 # Jansson
 # ===============================================================
+cd ~/src/github.com/akheron
 git clone https://github.com/akheron/jansson
 cd jansson
 autoreconf -vi
 ./configure
-make
+make -j 4
 make check
 sudo make install
 
@@ -133,8 +140,9 @@ wget -O- https://www.rabbitmq.com/rabbitmq-release-signing-key.asc | sudo apt-ke
 sudo apt-get update
 sudo apt-get install rabbitmq-server # if this fails, go back & read Erlang download/install comments above
 service rabbitmq-server start
-#
+# ===============================================================
 # for C development
+cd ~/src/github.com/alanxz
 git clone git@github.com:alanxz/rabbitmq-c.git
 cd rabbitmq-c
 mkdir build && cd build
@@ -145,26 +153,33 @@ sudo cmake --build . --target install
 # ===============================================================
 # valgrind
 # ===============================================================
-# go to http://valgrind.org/downloads/current.html, download & install most recent version.
+# go to http://valgrind.org/downloads/current.html, download into ~/src/valgrind.org
 # manual available at http://valgrind.org/docs/manual/valgrind_manual.pdf
 # build instructions after extracting the .tar.bz2 file into a subdirectory:
-cd <subdirectory>
+cd ~/src/valgrind.org
+# install .tar.bz2 file
+cd <directory>
 ./configure
-make
+make -j 4
 sudo make install
 
 # ===============================================================
 # SQLite
 # ===============================================================
 # go to http://sqlite.org/download.html, download sqlite-autoconf-3230100.tar.gz
-# follow instructions to build from source.
+# follow instructions to build from source. For example:
+cd sqlite-autoconf-3230100
+configure --enable-readline
+make -j 4
+cp sqlite3 ~/bin
 # 
-# separate product for GUI
+# ===============================================================
+# SQLite browser - separate product for GUI
 sudo apt-get install -y sqlitebrowser
 
 # ===============================================================
-# QT
+# Qt
 # ===============================================================
-# libraries needed for QT Creator
+# libraries needed for Qt Creator
 sudo apt-get install -y libgl1-mesa-dev
 sudo apt-get install -y mesa-common-dev
