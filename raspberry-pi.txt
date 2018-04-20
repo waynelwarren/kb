@@ -16,3 +16,15 @@ sudo ./rpiboot
 # may need to unmount them before dd.
 
 sudo dd if=raw_os_image_of_your_choice.img of=/dev/sdX bs=4MiB
+
+
+To expand the SD card after a smaller image as been dd'd to it:
+  - boot the card on the Pi
+  - run 'sudo raspi-config
+      - select '7 Advanced Options'
+      - select 'A1 Expand File System'
+
+
+To change the keyboard from the UK:
+  - Open Applications Menu -> Preferences -> Mouse and Keyboard Settings
+  - Find 'English (US)'
