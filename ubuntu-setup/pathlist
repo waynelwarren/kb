@@ -1,4 +1,6 @@
-bin /home/wayne/bin
-git /home/wayne/git
-today /home/wayne/wlw/18-04
-go /home/wayne/git/src/github.com/apollovideo
+bin  /home/wayne/bin
+code /home/wayne/src
+git  /home/wayne/src/github.com
+go   /home/wayne/src/github.com/apollovideo
+chmm /home/wayne/src/github.com/apollovideo/chmm_server
+kb   /home/wayne/src/github.com/waynelwarren/kb

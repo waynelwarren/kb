@@ -77,6 +77,7 @@ tar xf boost.tar
 cd boost_1_64_0
 ./bootstrap.sh
 ./b2
+sudo ./b2 install
 export BOOST_ROOT=/home/nvidia/git/boost_1_64_0
 cp stage/lib/libboost_system.so.1.64.0 ~/lib
 ln -s ~/lib/libboost_system.so.1.64.0 ~/lib/libboost_system.so
