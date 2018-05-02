@@ -1,5 +1,5 @@
-pi@172.22.4.191 Raspberry Pi, Apollo, Linux
-wayne@172.22.4.227 Xerxes, Apollo, Linux
-wayne@10.212.134.20[0123] home, Linux
-172.22.3.238 wayne.warren, Apollo, Windows 10
-wayne@172.22.4.104 wayne ubuntu Pi development
+wayne@11.212.134.20[0123] home, Linux
+pi@172.22.4.28 Pi Raspian
+172.22.3.244 WLW-XPS wifi
+172.22.3.218 WLW-XPS eth
+172.22.6.200 ODC
