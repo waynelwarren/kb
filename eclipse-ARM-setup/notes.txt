@@ -1,5 +1,4 @@
 sudo apt-get install lib32ncurses5 
-
 find eclipse-cpp-oxygen-R-linux-gtk-x86_64.tar.gz (http://www.eclipse.org/downloads/packages/eclipse-ide-cc-developers/oxygenr) or something newer. Unzip it into eclipse/ (~/eclipse or elsewhere) directory & include in path if desired.
 
 get Sourcery_G++_Lite.tar.gz (http://avtjira01:8090/display/RAIL/CodeSourcery+ARM+Toolchain).
@@ -22,6 +21,7 @@ Within Eclipse, install GNU MCU:
 IDIS Search and Watch APIs for ARM
 ftp://sales.idis.co.kr/RAS_Plus/SDK/
  un: apollovideo, pw: apollovideo
+ un: apollovideo, pw: AVT@98021
 
 Other libraries available from
 git clone https://github.com/apollovideo/armLib.git
