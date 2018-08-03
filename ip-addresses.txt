@@ -1,6 +1,6 @@
 wayne@11.212.134.20[0123] home, Linux
 pi@172.22.4.28 Pi Raspian
 172.22.4.116 WLW-XPS wifi
-172.22.3.218 WLW-XPS eth
-172.22.6.200 ODC
-172.22.3.167 Win 7
+172.22.4.60  WLW-XPS eth
+172.22.4.94  Win 7 eth
+172.22.4.101 Win 7 wifi
