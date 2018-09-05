@@ -185,3 +185,5 @@ sudo apt-get install -y sqlitebrowser
 # libraries needed for Qt Creator
 sudo apt-get install -y libgl1-mesa-dev
 sudo apt-get install -y mesa-common-dev
+
+# use shotwell to set up background wallpaper slideshow
