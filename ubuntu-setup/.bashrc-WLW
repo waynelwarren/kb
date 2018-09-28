@@ -7,7 +7,7 @@ export CMAKE_BUILD_TYPE=DEBUG
 export PS1="\[\033[01;44m\h@\u:\w\n>\[\033[00m"
 alias f='find . -name '
 alias hi='history'
-alias grepcode='grep -r --include="*.go" --include="*.c" --include="*.cc" --include="*.cpp" --include="*.h" --include="*.h"'
+alias grepcode='grep -r --include="*.go" --include="*.c" --include="*.cc" --include="*.cpp" --include="*.h" --include="*.hpp"'
 alias today='cd /home/wayne/wlw/`date +%g-%m`'
 alias tree='find . | grep -v \.git | sed s/^..//'
 alias lld='ls -ld `find . | grep -v "/\.git" | sed s/^..//`'
