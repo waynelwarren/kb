@@ -17,6 +17,15 @@ sudo ./rpiboot
 
 sudo dd if=raw_os_image_of_your_choice.img of=/dev/sdX bs=4MiB
 
+To enable wifi from the command-line:
+  - sudo sudo cat >> /etc/wpa_supplicant/wpa_supplicant.conf << ENDOFFILE
+    network={
+      ssid="Apollo"
+      psk="rrHDmobile!"                                             
+    }                                                               
+    country=US
+    ENDOFFILE
+    wpa_cli -i wlan0 reconfigure                                    
 
 To expand the SD card after a smaller image as been dd'd to it:
   - boot the card on the Pi
@@ -28,3 +37,5 @@ To expand the SD card after a smaller image as been dd'd to it:
 To change the keyboard from the UK:
   - Open Applications Menu -> Preferences -> Mouse and Keyboard Settings
   - Find 'English (US)'
+  or
+  - in raspi-config use Localisation option
