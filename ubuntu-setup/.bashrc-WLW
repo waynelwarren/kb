@@ -1,5 +1,8 @@
 # WLW additions
 ch() { cd `grep -m 1 "^$1" ~/bin/pathlist | awk '{print $2}'` ; }
+dps() { docker ps $1 | awk '{print $1 "  " $2}' ; }
+dimg() { docker images | awk '{print $3 "  " $4 " " $5 "	" $1 ":" $2}' ; }
+drmi() { docker rmi `docker images -f "dangling=true" -q` ; }
 export LD_LIBRARY_PATH=/home/wayne/lib
 export PATH=./:/home/wayne/bin:$PATH
 export GOPATH=/home/wayne
@@ -17,3 +20,4 @@ alias .='cd ..'
 alias ..='cd ../..'
 alias qtcreator='/home/wayne/Qt/Tools/QtCreator/bin/qtcreator > /dev/null 2>&1 &'
 alias qmake='/home/wayne/Qt/5.10.1/gcc_64/bin/qmake'
+alias v='nautilus -w . > /dev/null 2>&1'
